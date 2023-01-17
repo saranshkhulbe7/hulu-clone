@@ -9,7 +9,7 @@ function Thumbnail({ result }) {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
   console.log(result);
   return (
-    <div className="group p-4 cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50">
+    <div className="group p-4 cursor-pointer transition duration-300 ease-in transform sm:hover:scale-105 hover:z-50">
       <Image
         height={1080}
         width={1920}
@@ -18,7 +18,7 @@ function Thumbnail({ result }) {
           `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
           `${BASE_URL}${result.poster_path}`
         }
-        className="3xl:max-w-[550px]"
+        className="3xl:max-w-[550px] aspect-video"
       />
 
       <div className="p-2">
@@ -26,7 +26,7 @@ function Thumbnail({ result }) {
         <h2 className="mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
           {result.title || result.original_name}
         </h2>
-        <p className="flex items-center opacity-0 group-hover:opacity-100">
+        <p className="flex transition-all duration-300 ease-in-out items-center opacity-0 group-hover:opacity-100">
           {result.media_type && `${result.media_type} •`}{" "}
           {result.release_date || result.first_air_date} •{" "}
           <HandThumbUpIcon className="h-5 mx-2" /> {result.vote_count}
